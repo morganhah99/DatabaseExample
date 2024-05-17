@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.logical.mydictionary.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_details"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="itemData"
+            app:argType="com.logical.mydictionary.model.ResultItemModel" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.logical.mydictionary.ui.details.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_navigation_details_to_navigation_search"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.logical.mydictionary.ui.saved.SavedFragment"
+        android:label="Saved"
+        tools:layout="@layout/fragment_saved"
+    >
+        <action
+            android:id="@+id/action_savedFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+        <argument
+            android:name="itemData"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.logical.mydictionary.ui.description.DescriptionFragment"
+        android:label="DescriptionFragment" >
+        <action
+            android:id="@+id/action_descriptionFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+    </fragment>
+
+
+</navigation>
